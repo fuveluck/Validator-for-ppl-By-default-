@@ -104,7 +104,7 @@ export default {
 
       // Create the history entry with the new file URL
       this.history.push({
-        name: "ZadanieDP.txt", // Static name as requested
+        name: `Document_${timestamp}.txt`, // Static name as requested
         url: fileUrl, // The URL for preview and download
         feedback: "", // Empty feedback initially
         submittedFeedback: false, // Initially, feedback is not submitted
@@ -142,8 +142,7 @@ export default {
         return;
       }
 
-      const timestamp = new Date().toISOString().replace(/[-:T.]/g, "").slice(0, 14); // Format: YYYYMMDDHHMMSS
-      const feedbackFileName = `${item.name.replace(/\.[^/.]+$/, "")}_feedback_${timestamp}.txt`;
+      const feedbackFileName = `${item.name.replace(/\.[^/.]+$/, "")}_feedback.txt`;
       const blob = new Blob([item.feedback], { type: "text/plain" });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
